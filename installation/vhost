@@ -1,0 +1,23 @@
+<VirtualHost *:80>
+    ServerName ezbolt.ezsc
+    DocumentRoot /var/www/summercamp/workshops/ezbolt
+    DirectoryIndex index.php
+
+    # Enabled for Dev environment
+    # LogLevel debug
+
+    <Directory /var/www/summercamp/workshops/ezbolt>
+        Options FollowSymLinks
+        AllowOverride All
+    </Directory>
+
+    <IfModule mod_php5.c>
+        php_admin_flag safe_mode Off
+        php_admin_value register_globals    0
+        php_value magic_quotes_gpc  0
+        php_value magic_quotes_runtime  0
+        php_value allow_call_time_pass_reference 0
+	    php_value max_execution_time 180
+    </IfModule>
+
+</VirtualHost>
